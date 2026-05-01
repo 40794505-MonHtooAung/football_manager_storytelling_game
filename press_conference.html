@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Press Conference</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>Press Conference</h1>
+</header>
+
+<section class="content">
+<p id="question"></p>
+
+<div class="choices" id="choices"></div>
+
+</section>
+
+<a class="back" href="index.html">Back</a>
+
+<script src="js/game.js"></script>
+
+<script>
+let step = getPCStep();
+
+let questionText = document.getElementById("question");
+let choicesDiv = document.getElementById("choices");
+
+// ---------- QUESTION 1 ----------
+if (step === 1) {
+
+    questionText.innerText = 'Journalist: "Your team looks mentally weak. Why should fans believe in you?"';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="press_conference.html" onclick="addScore(2); nextPCStep();">We are ready to fight.</a>
+        <a class="btn" href="press_conference.html" onclick="addScore(1); nextPCStep();">We stay calm under pressure.</a>
+        <a class="btn" href="press_conference.html" onclick="addScore(-2); nextPCStep();">We just hope for the best.</a>
+    `;
+}
+
+// ---------- QUESTION 2 ----------
+else if (step === 2) {
+
+    questionText.innerText = 'Journalist: "Man City need this win to become champions. Your thoughts?"';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="press_conference.html" onclick="addScore(2); nextPCStep();">We will ruin their title dreams.</a>
+        <a class="btn" href="press_conference.html" onclick="addScore(1); nextPCStep();">They are strong, but we have a plan.</a>
+        <a class="btn" href="press_conference.html" onclick="addScore(-2); nextPCStep();">They are too strong.</a>
+    `;
+}
+
+// ---------- QUESTION 3 ----------
+else if (step === 3) {
+
+    questionText.innerText = 'Journalist: "Reports say your dressing room is nervous. Is that true?"';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="training_talk.html" onclick="addScore(2);">No, we are united.</a>
+        <a class="btn" href="training_talk.html" onclick="addScore(1);">Some nerves, but manageable.</a>
+        <a class="btn" href="training_talk.html" onclick="addScore(-2);">Yes, it is a concern.</a>
+    `;
+}
+</script>
+
+</body>
+</html>

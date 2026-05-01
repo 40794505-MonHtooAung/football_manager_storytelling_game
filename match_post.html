@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Final Result</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>Season Final Result</h1>
+</header>
+
+<section class="content">
+<div id="ending"></div>
+
+<a class="btn" href="index.html" onclick="resetScore()">Play Again</a>
+</section>
+
+<script src="js/game.js"></script>
+
+<script>
+let score = getScore();
+
+let endingDiv = document.getElementById("ending");
+
+if (score >= 10) {
+
+    endingDiv.innerHTML = `
+        <h2>SURVIVED!</h2>
+        <p>Your decisions under pressure saved the club.</p>
+        <p>The fans celebrate your leadership as the team escapes relegation on the final day.</p>
+    `;
+
+} else if (score >= 5) {
+
+    endingDiv.innerHTML = `
+        <h2>SURVIVAL BY A THREAD</h2>
+        <p>You barely avoided relegation.</p>
+        <p>Some decisions worked, some failed but you survived the pressure.</p>
+    `;
+
+} else {
+
+    endingDiv.innerHTML = `
+        <h2>RELEGATED</h2>
+        <p>The final whistle confirms it.</p>
+        <p>Your decisions weren’t enough to save the team.</p>
+        <p>The club faces a painful drop to the lower division.</p>
+    `;
+}
+</script>
+
+</body>
+</html>

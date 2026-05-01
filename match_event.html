@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Match Event</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>Match in Progress</h1>
+</header>
+
+<section class="content">
+<p id="eventText"></p>
+
+<div class="choices" id="choices"></div>
+</section>
+
+<a class="back" href="match_day_talk.html">Back</a>
+
+<script src="js/game.js"></script>
+
+<script>
+let step = getMEStep();
+
+let text = document.getElementById("eventText");
+let choices = document.getElementById("choices");
+
+// ---------- EVENT 1 ----------
+if (step === 1) {
+
+    text.innerText = "10' — Your team gets an early attacking chance! What do you do?";
+
+    choices.innerHTML = `
+        <a class="btn" href="match_event.html" onclick="addScore(2); nextMEStep();">Shoot immediately</a>
+        <a class="btn" href="match_event.html" onclick="addScore(1); nextMEStep();">Pass and build attack</a>
+    `;
+}
+
+// ---------- EVENT 2 ----------
+else if (step === 2) {
+
+    // RANDOM DRAMA
+    let randomEvent = Math.floor(Math.random() * 2);
+
+    if (randomEvent === 0) {
+        text.innerText = "65' — PENALTY for your team! The stadium is silent.";
+
+        choices.innerHTML = `
+            <a class="btn" href="match_event.html" onclick="addScore(2); nextMEStep();">Take a powerful shot</a>
+            <a class="btn" href="match_event.html" onclick="addScore(1); nextMEStep();">Place it carefully</a>
+        `;
+    } else {
+        text.innerText = "65' — Your defender receives a RED CARD! You're down to 10 men.";
+
+        choices.innerHTML = `
+            <a class="btn" href="match_event.html" onclick="addScore(1); nextMEStep();">Defend deeper</a>
+            <a class="btn" href="match_event.html" onclick="addScore(-1); nextMEStep();">Keep attacking</a>
+        `;
+    }
+}
+
+// ---------- EVENT 3 ----------
+else if (step === 3) {
+
+    text.innerText = "90' — FINAL MOMENT! One last chance to save your season!";
+
+    choices.innerHTML = `
+        <a class="btn" href="match_post.html" onclick="addScore(2);">All-out attack!</a>
+        <a class="btn" href="match_post.html" onclick="addScore(1);">Stay organized</a>
+    `;
+}
+</script>
+
+</body>
+</html>

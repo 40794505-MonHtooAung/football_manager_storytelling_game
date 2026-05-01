@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Training Session</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>Training Session</h1>
+</header>
+
+<section class="content">
+<p id="question"></p>
+
+<div class="choices" id="choices"></div>
+</section>
+
+<a class="back" href="training_talk.html">Back</a>
+
+<script src="js/game.js"></script>
+
+<script>
+let step = getTSStep();
+
+let questionText = document.getElementById("question");
+let choicesDiv = document.getElementById("choices");
+
+// ---------- STEP 1 ----------
+if (step === 1) {
+
+    questionText.innerText = 'You begin training. What intensity do you choose?';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="training_session.html" onclick="addScore(2); nextTSStep();">High intensity (push players hard)</a>
+        <a class="btn" href="training_session.html" onclick="addScore(1); nextTSStep();">Normal training</a>
+        <a class="btn" href="training_session.html" onclick="addScore(-1); nextTSStep();">Light session (avoid risk)</a>
+    `;
+}
+
+// ---------- STEP 2 ----------
+else if (step === 2) {
+
+    questionText.innerText = 'A key defender feels pain during training. What do you do?';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="match_day_talk.html" onclick="addScore(1);">Sub him out and protect him</a>
+        <a class="btn" href="match_day_talk.html" onclick="addScore(-2);">Push him to continue training</a>
+    `;
+}
+</script>
+
+</body>
+</html>

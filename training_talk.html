@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Training - Team Talk</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>Training - Team Talk</h1>
+</header>
+
+<section class="content">
+<p id="question"></p>
+
+<div class="choices" id="choices"></div>
+</section>
+
+<a class="back" href="press_conference.html">Back</a>
+
+<script src="js/game.js"></script>
+
+<script>
+let step = getTTStep();
+
+let questionText = document.getElementById("question");
+let choicesDiv = document.getElementById("choices");
+
+// ---------- STEP 1 ----------
+if (step === 1) {
+
+    questionText.innerText = 'You gather the players before training. They look nervous. What do you say?';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="training_talk.html" onclick="addScore(2); nextTTStep();">We fight together. No fear.</a>
+        <a class="btn" href="training_talk.html" onclick="addScore(1); nextTTStep();">Stay disciplined and focused.</a>
+        <a class="btn" href="training_talk.html" onclick="addScore(-1); nextTTStep();">Do not make mistakes.</a>
+    `;
+}
+
+// ---------- STEP 2 ----------
+else if (step === 2) {
+
+    questionText.innerText = 'Your main striker hasn’t scored in 5 matches. He looks at you. What do you tell him?';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="training_session.html" onclick="addScore(2);">I trust you. You will score today.</a>
+        <a class="btn" href="training_session.html" onclick="addScore(1);">You need to work harder.</a>
+        <a class="btn" href="training_session.html" onclick="addScore(-2);">I might bench you if you fail again.</a>
+    `;
+}
+</script>
+
+</body>
+</html>

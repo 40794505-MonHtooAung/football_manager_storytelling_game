@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Match Day - Team Talk</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>Match Day - Team Talk</h1>
+</header>
+
+<section class="content">
+<p id="question"></p>
+
+<div class="choices" id="choices"></div>
+</section>
+
+<a class="back" href="training_session.html">Back</a>
+
+<script src="js/game.js"></script>
+
+<script>
+let step = getMDStep();
+
+let questionText = document.getElementById("question");
+let choicesDiv = document.getElementById("choices");
+
+// ---------- STEP 1 ----------
+if (step === 1) {
+
+    questionText.innerText = 'Kickoff is minutes away. What is your game plan?';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="match_day_talk.html" onclick="addScore(2); nextMDStep();">Attack from the start</a>
+        <a class="btn" href="match_day_talk.html" onclick="addScore(1); nextMDStep();">Defend and counter</a>
+        <a class="btn" href="match_day_talk.html" onclick="addScore(-1); nextMDStep();">Play very safe</a>
+    `;
+}
+
+// ---------- STEP 2 ----------
+else if (step === 2) {
+
+    questionText.innerText = 'Players look nervous. What do you say before they walk out?';
+
+    choicesDiv.innerHTML = `
+        <a class="btn" href="match_event.html" onclick="addScore(2);">Make history today!</a>
+        <a class="btn" href="match_event.html" onclick="addScore(1);">Play your natural game.</a>
+        <a class="btn" href="match_event.html" onclick="addScore(-2);">Do not mess this up.</a>
+    `;
+}
+</script>
+
+</body>
+</html>
